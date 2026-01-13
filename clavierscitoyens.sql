@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 08 jan. 2026 à 14:21
+-- Généré le : mar. 13 jan. 2026 à 07:36
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `match` (
   `team2Id` int NOT NULL,
   `team1Point` int NOT NULL DEFAULT '0',
   `team2Point` int NOT NULL DEFAULT '0',
+  `round` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_match_team1` (`team1Id`),
   KEY `fk_match_team2` (`team2Id`)
@@ -69,7 +70,14 @@ CREATE TABLE IF NOT EXISTS `tournament` (
   `game` varchar(100) NOT NULL,
   `status` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `tournament`
+--
+
+INSERT INTO `tournament` (`id`, `name`, `game`, `status`) VALUES
+(1, 'tournoi1', 'r', 'finis');
 
 --
 -- Contraintes pour les tables déchargées
