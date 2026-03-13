@@ -1,19 +1,4 @@
-<?php
-/**
- * PLACEHOLDER - Gestion des tournois (à compléter par tes collaborateurs)
- *
- * Routes locales stables (à utiliser côté front) :
- *   GET    /api/tournaments.php                      -> liste
- *   POST   /api/tournaments.php                      -> créer
- *   GET    /api/tournaments.php?tournamentId=1       -> détail
- *   PATCH  /api/tournaments.php?tournamentId=1       -> update
- *   DELETE /api/tournaments.php?tournamentId=1       -> delete
- *
- * Convention de proxy (à conserver pour éviter les conflits de merge) :
- *   API distante supposée :
- *     /tournaments
- *     /tournaments/{id}
- */
+<?php  
 require_once __DIR__.'/config.php';
 require_once __DIR__.'/http.php';
 
@@ -31,7 +16,6 @@ if ($method === 'GET') {
 }
 
 if ($method === 'POST') {
-  // Exemple payload attendu: { name, game, teamsCount }
   $r = api_request('POST', $base, $token, $input);
   json_out($r['status'] ?: 500, $r['data'] ?? ['message' => $r['error']]);
 }

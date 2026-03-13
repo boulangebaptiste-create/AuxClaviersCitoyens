@@ -1,18 +1,4 @@
 <?php
-/**
- * PLACEHOLDER - Gestion des matchs & scores (à compléter par tes collaborateurs)
- *
- * Routes locales stables :
- *   GET   /api/matches.php?tournamentId=1                 -> liste des matchs du tournoi
- *   GET   /api/matches.php?tournamentId=1&matchId=10      -> détail match
- *   PATCH /api/matches.php?tournamentId=1&matchId=10      -> update score / infos
- *
- * Convention de proxy (à conserver) :
- *   API distante supposée :
- *     /tournaments/{id}/matches
- *     /tournaments/{id}/matches/{matchId}
- *     (ou endpoint "update match points" spécifique)
- */
 require_once __DIR__.'/config.php';
 require_once __DIR__.'/http.php';
 
@@ -35,7 +21,6 @@ if ($method === 'GET') {
 
 if ($method === 'PATCH' || $method === 'PUT') {
   if ($matchId <= 0) json_out(400, ['message' => 'matchId manquant']);
-  // Exemple: { teamId, points } ou { team1Point, team2Point } selon l'API
   $r = api_request('PATCH', "$base/$matchId", $token, $input);
   json_out($r['status'] ?: 500, $r['data'] ?? ['message' => $r['error']]);
 }
